@@ -1458,7 +1458,7 @@ tailwind.config = {
     </div>
   </div>
   <div class="footer-bottom">
-    <p>© 2024 Taylor Swift Fan Hub. Fan-made, non-commercial.<br>All images and music © Taylor Swift / TAS Rights Management. Fair use fan site.</p>
+    <p>© <span id="copyright-year"></span> Taylor Swift Fan Hub. Fan-made, non-commercial.<br>All images and music © Taylor Swift / TAS Rights Management. Fair use fan site.</p>
     <div class="ts">T.S.</div>
   </div>
 </footer>
@@ -1730,6 +1730,8 @@ revealEls.forEach(el => revealObserver.observe(el));
     }
   });
 })();
+
+document.getElementById('copyright-year').textContent = new Date().getFullYear();
 
 </script>
 </body>
