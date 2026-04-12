@@ -20,7 +20,10 @@
       "Read(//Users/yiqilee/.cache/**)",
       "Bash(node -e \"require.resolve\\('puppeteer'\\)\")",
       "Bash(git init:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit -m ':*)",
+      "Bash(node screenshot.mjs http://localhost:3000 music-btn)",
+      "Bash(node -e ':*)"
     ]
   }
 }

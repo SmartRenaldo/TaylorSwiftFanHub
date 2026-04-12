@@ -101,11 +101,19 @@ Short phrases for hero banners, section headers, and background text.
 
 ## 4. Video Assets
 
-> All YouTube links are official channels. Embedding via `<iframe>` is permitted under YouTube ToS for fan sites. Do not re-host video files.
+> All YouTube links are official channels. Embedding via `<iframe>` is permitted under YouTube ToS for fan sites.
+> **Hero section now uses a locally downloaded MP4** — see the "Hero Video" table below.
+
+### Hero Video (downloaded locally)
+
+| Local File | Description | Original Source | Suggested Use |
+|-----------|-------------|-----------------|---------------|
+| ✅ [TAYLOR SWIFT  THE ERAS TOUR Concert Film Official Trailer - Taylor Swift (1080p, h264).mp4](../assets/video/hero/TAYLOR%20SWIFT%20%20THE%20ERAS%20TOUR%20Concert%20Film%20Official%20Trailer%20-%20Taylor%20Swift%20(1080p%2C%20h264).mp4) | Official Eras Tour Concert Film trailer — sweeping crowd + stage shots, high production | [YouTube](https://www.youtube.com/watch?v=jn7FOJGQ6U4) | Hero section muted autoplay loop (`<video>` element, `.hero-local-video`) |
+
+### Music Videos & Clips (YouTube embed)
 
 | Video | Description | URL | Suggested Use |
 |-------|-------------|-----|---------------|
-| The Eras Tour (Official Trailer) | Sweeping crowd + stage shots, high production | [YouTube](https://www.youtube.com/watch?v=jn7FOJGQ6U4) | Hero section muted autoplay loop |
 | Midnights "Anti-Hero" MV | Dark, cinematic, navy/gold — matches site palette | [YouTube](https://www.youtube.com/watch?v=b1kbLwvqugk) | Midnights era section background video |
 | Fearless "Love Story" (TV) MV | Golden hour, warm nostalgic tone | [YouTube](https://www.youtube.com/watch?v=8xg3vE8Ie_E) | Fearless era section hero / timeline |
 | Red (TV) "All Too Well 10min" MV | Autumn palette, emotional short film quality | [YouTube](https://www.youtube.com/watch?v=tollwMDaH-Q) | Red era feature video |
@@ -168,6 +176,8 @@ assets/
 │   ├── thirteen-heart.svg                         ⬇️ to be built
 │   └── music-note-icon.svg                        ⬇️ to be built
 └── video/
+    ├── hero/
+    │   └── TAYLOR SWIFT  THE ERAS TOUR Concert Film Official Trailer - Taylor Swift (1080p, h264).mp4  ✅
     └── loops/
         ├── stage-spotlights-colored.mp4           ✅  8.1 MB
         ├── stage-light-large.mp4                  ✅  4.0 MB

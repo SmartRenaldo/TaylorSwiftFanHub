@@ -41,6 +41,8 @@
 - A real logo exists at `assets/logos/eras-tour-logo.png` — use it, never a placeholder.
 - If assets exist there, use them. Do not use placeholders where real assets are available.
 - If a color palette is defined (see **Project Identity** below), use those exact values — do not invent brand colors.
+- **Hero video:** `assets/video/hero/` holds the local Eras Tour Concert Film trailer MP4. Use a `<video autoplay muted loop playsinline>` element with class `.hero-local-video` — **not** a YouTube `<iframe>`. The cover image fades out on the video's `canplay` event.
+- **Loop videos:** `assets/video/loops/` holds ambient Mixkit loops for section backgrounds.
 
 ## Project Identity — Taylor Swift Fan Hub
 
