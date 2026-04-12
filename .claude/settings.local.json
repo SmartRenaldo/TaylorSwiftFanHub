@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(claude plugin:*)",
+      "Bash(claude --version)",
+      "WebFetch(domain:blaedagency.com)",
+      "WebSearch",
+      "WebFetch(domain:web.archive.org)",
+      "WebFetch(domain:www.cssdesignawards.com)",
+      "WebFetch(domain:me.muz.li)",
+      "WebFetch(domain:unmatchedstyle.com)",
+      "WebFetch(domain:www.landing.love)",
+      "WebFetch(domain:www.awwwards.com)",
+      "WebFetch(domain:www.eggradients.com)",
+      "WebFetch(domain:theapplaunchpad.com)",
+      "WebFetch(domain:designworklife.com)",
+      "WebFetch(domain:mixkit.co)",
+      "WebFetch(domain:assets.mixkit.co)",
+      "WebFetch(domain:commons.wikimedia.org)",
+      "Read(//Users/yiqilee/.cache/**)",
+      "Bash(node -e \"require.resolve\\('puppeteer'\\)\")",
+      "Bash(git init:*)",
+      "Bash(git add:*)"
+    ]
+  }
+}
