@@ -351,7 +351,7 @@ tailwind.config = {
     position: relative;
     width: 100%;
     max-width: 100%;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 16 / 9;
     overflow: hidden;
     border: 1px solid rgba(var(--era-accent-rgb), 0.2);
     transition: border-color 0.9s ease;
@@ -377,14 +377,14 @@ tailwind.config = {
     transition: opacity 1s ease;
   }
   .hero-vid-cover.is-hidden { opacity: 0; }
-  /* Local MP4 — 16:9 video scaled to cover 1:1 square panel */
+  /* Local MP4 — 16:9 video fills 16:9 container */
   .hero-local-video {
     position: absolute;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 177.78%;   /* 16/9 × 100% */
-    height: 100%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 128%;   /* hides ~11% top and bottom: 100/0.78 ≈ 128% */
     object-fit: cover;
     pointer-events: none;
     z-index: 1;
@@ -503,8 +503,8 @@ tailwind.config = {
   .hero-cta span { position: relative; z-index: 1; }
 
   .hero-scroll-cue {
-    position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
     display: flex; flex-direction: column; align-items: center; gap: 8px;
+    margin-top: -40px;
     z-index: 2;
     opacity: 0;
     animation: fadeInUp 1s 2s ease forwards;
@@ -1075,11 +1075,12 @@ tailwind.config = {
       </div>
     </div>
   </div>
-  <div class="hero-scroll-cue">
-    <span>Scroll</span>
-    <div class="scroll-line"></div>
-  </div>
 </section>
+
+<div class="hero-scroll-cue">
+  <span>Scroll</span>
+  <div class="scroll-line"></div>
+</div>
 
 <!-- Quote Marquee -->
 <div class="quote-marquee">
