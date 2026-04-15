@@ -86,16 +86,6 @@ tailwind.config = {
     transition: transform 0.1s ease;
   }
   #cursor svg { filter: drop-shadow(0 0 6px var(--era-accent)); }
-  #cursor-trail {
-    position: fixed; top: 0; left: 0; z-index: 9998;
-    pointer-events: none;
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: var(--era-accent);
-    opacity: 0.4;
-    transform: translate(-50%, -50%);
-    transition: transform 0.25s ease, background 0.9s ease, left 0.08s ease, top 0.08s ease;
-  }
 
   /* ─── Film Grain ────────────────────────────────────────────── */
   #grain {
@@ -189,6 +179,7 @@ tailwind.config = {
     color: rgba(245,240,232,0.7);
     text-decoration: none;
     position: relative;
+    cursor: none;
     transition: color 0.3s ease;
   }
   .nav-links a::after {
@@ -997,7 +988,6 @@ tailwind.config = {
     <path d="M10 1L11.9 7.3H18.5L13.3 11.2L15.2 17.5L10 13.6L4.8 17.5L6.7 11.2L1.5 7.3H8.1L10 1Z" fill="#C9A84C" stroke="#C9A84C" stroke-width="0.5"/>
   </svg>
 </div>
-<div id="cursor-trail"></div>
 
 <!-- Film Grain -->
 <div id="grain"></div>
@@ -1473,17 +1463,12 @@ window.addEventListener('load', () => {
 
 // ── Custom Cursor ────────────────────────────────────────────
 const cursor = document.getElementById('cursor');
-const cursorTrail = document.getElementById('cursor-trail');
 let mx = 0, my = 0;
 
 document.addEventListener('mousemove', e => {
   mx = e.clientX; my = e.clientY;
   cursor.style.left = mx + 'px';
   cursor.style.top = my + 'px';
-  setTimeout(() => {
-    cursorTrail.style.left = mx + 'px';
-    cursorTrail.style.top = my + 'px';
-  }, 80);
 });
 
 // ── Star Canvas ──────────────────────────────────────────────
@@ -1687,7 +1672,8 @@ const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('visible');
-      revealObserver.unobserve(entry.target);
+    } else {
+      entry.target.classList.remove('visible');
     }
   });
 }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
