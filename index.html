@@ -2528,14 +2528,13 @@
         const vid = document.querySelector(".hero-local-video");
         if (!btn || !vid) return;
 
-        // Video is muted by default; unmuting = "playing music"
         let playing = false;
+        let unlocked = false;
 
-        btn.addEventListener("click", () => {
-          playing = !playing;
-          vid.muted = !playing;
-          if (playing) {
-            // If video somehow paused, resume it
+        function setPlaying(state) {
+          playing = state;
+          vid.muted = !state;
+          if (state) {
             vid.play().catch(() => {});
             btn.classList.add("is-playing");
             btn.setAttribute("aria-label", "Stop music");
@@ -2545,16 +2544,43 @@
             btn.setAttribute("aria-label", "Play music");
             label.textContent = "Music";
           }
+        }
+
+        // Browsers block unmuted autoplay. Unlock audio on first user
+        // interaction anywhere on the page, then auto-start music.
+        function unlock() {
+          if (unlocked) return;
+          unlocked = true;
+          document.removeEventListener("click", unlock, true);
+          document.removeEventListener("keydown", unlock, true);
+          document.removeEventListener("touchstart", unlock, true);
+          document.removeEventListener("scroll", unlock, true);
+          // Auto-start music on first interaction (unless user already toggled)
+          if (!playing) setPlaying(true);
+        }
+        document.addEventListener("click", unlock, true);
+        document.addEventListener("keydown", unlock, true);
+        document.addEventListener("touchstart", unlock, true);
+        document.addEventListener("scroll", unlock, true);
+
+        btn.addEventListener("click", (e) => {
+          // If this click is the unlock event, unlock() already started music.
+          // The flag prevents the toggle from immediately turning it back off.
+          if (!unlocked) {
+            unlocked = true;
+            document.removeEventListener("click", unlock, true);
+            document.removeEventListener("keydown", unlock, true);
+            document.removeEventListener("touchstart", unlock, true);
+            document.removeEventListener("scroll", unlock, true);
+            setPlaying(true);
+            return;
+          }
+          setPlaying(!playing);
         });
 
         // If the video ends or pauses externally, reset UI
         vid.addEventListener("pause", () => {
-          if (playing) {
-            playing = false;
-            btn.classList.remove("is-playing");
-            btn.setAttribute("aria-label", "Play music");
-            label.textContent = "Music";
-          }
+          if (playing) setPlaying(false);
         });
       })();
 
